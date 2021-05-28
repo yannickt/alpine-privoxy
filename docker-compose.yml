@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  privoxy:
+    build:
+      context: https://github.com/leleobhz/alpine-privoxy.git
+    container_name: privoxy
+#    environment:
+#      - SOCKS5IP=10.5.0.5
+#      - SOCKS5PORT=9050
+#      - I2PIP=10.5.0.5
+#      - I2PPORT=4444
+    ports:
+      - 8118:8118
+    healthcheck:
+      test: ["CMD", "curl", "-s", "-L", "--proxy", "127.0.0.1:8118", "https://ipinfo.io/ip"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+    logging:
+      driver: journald
