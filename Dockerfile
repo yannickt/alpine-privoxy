@@ -1,7 +1,7 @@
 FROM alpine:edge
 
-LABEL maintainer="Leonardo Amaral"
-LABEL creator="Daniel Guerra"
+LABEL maintainer="Yannick Tailliez"
+LABEL creator="Daniel Guerra, Leonardo Amaral"
 LABEL original-repo="https://github.com/danielguerra69/alpine-privoxy"
 
 RUN apk add --update --no-cache curl privoxy
